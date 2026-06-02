@@ -5,6 +5,7 @@ import Link from "next/link";
 import BlogCardFull from "./BlogCardFull";
 
 import directus from "@/lib/directus";
+import { DIRECTUS_ASSETS_URL } from "@/lib/config";
 import { readItems } from "@directus/sdk";
 
 const Blog = async () => {
@@ -45,8 +46,7 @@ const Blog = async () => {
                                 date={blog.date_created}
                                 thumbnail={
                                     blog.banner_image
-                                        ? "https://directus-jcic.jcic.online/assets/" +
-                                          blog.banner_image
+                                        ? `${DIRECTUS_ASSETS_URL}/${blog.banner_image}`
                                         : `https://placehold.co/600x400/070e2b/dca54c?font=lora&text=${blog.Title.split(" ")[0].slice(0, -1)}`
                                 }
                             />

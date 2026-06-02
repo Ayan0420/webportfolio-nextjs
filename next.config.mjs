@@ -1,4 +1,8 @@
 /** @type {import('next').NextConfig} */
+const directusUrl = process.env.NEXT_PUBLIC_DIRECTUS_URL;
+if (!directusUrl) {
+    throw new Error('Missing NEXT_PUBLIC_DIRECTUS_URL environment variable.');
+}
 const nextConfig = {
     output: "standalone",
     // basePath: '/portfolio',
@@ -7,7 +11,7 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'directus-jcic.jcic.online',
+                hostname: new URL(directusUrl).hostname,
             }, 
             {
                 protocol: 'https',

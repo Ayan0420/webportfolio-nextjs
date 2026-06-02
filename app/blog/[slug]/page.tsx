@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import BlockParser from "./BlockParser";
 import directus from "@/lib/directus";
+import { DIRECTUS_ASSETS_URL } from "@/lib/config";
 
 const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
     const { slug } = await params;
@@ -49,9 +50,7 @@ const page = async ({ params }: { params: Promise<{ slug: string }> }) => {
                 <div className="flex justify-center mb-10">
                     {result[0].banner_image && (
                         <Image
-                            src={
-                                "https://directus-jcic.jcic.online/assets/" + result[0].banner_image
-                            }
+                            src={`${DIRECTUS_ASSETS_URL}/${result[0].banner_image}`}
                             alt="blog image"
                             width={800}
                             height={500}
